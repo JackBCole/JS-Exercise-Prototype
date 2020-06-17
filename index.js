@@ -126,13 +126,20 @@ aCar.fill(full)
 
 console.log(aCar.tank);
 
-// Car.prototype.drive = function(distance){
-// if(distance >= .1){
-//   this.odometer.push(distance) &&   this.tank.shift()
+  // - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
+  //       + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 
-// }
+Car.prototype.drive = function(distance){
+  this.odometer = this.odometer + distance;
+  this.tank = this.tank -  this.milesPerGallon * distance;
+    if(this.tank >= 0){
+      return `I ran out of fuel at ${this.odometer} miles!`  
 
-//}
+    }else(console.log("I can still drive!"))
+
+}
+console.log(aCar.drive(10))
+
 
 /*
   TASK 3
@@ -144,15 +151,12 @@ console.log(aCar.tank);
 
 
 function Baby(name, age, favoriteToy) {
-  this.name = name;
-  this.age = age; 
+  Person.call(this, name, age )
   this.favoriteToy = favoriteToy;
-
 }
 
 Baby.prototype.play = function(){
   return `Playing with ${this.favoriteToy}`
-
 }
 
 const aBaby = new Baby ("bill", 1, "Teddy Bear")
@@ -162,10 +166,14 @@ console.log(aBaby.play())
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+
+  1. Global binding is the use of "this" outside of a function, meaning "this" will call the window or global object and that is a lot of stuff
+
+  2. Implicit binding - basically instead of function_name.key       its       this.key
+
+  3. New binding is when we use this on a new object
+
+  4. explicit binding is using the .call or .apply 
 */
 
 
