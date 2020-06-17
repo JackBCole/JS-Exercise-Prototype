@@ -39,9 +39,44 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+this.stomach = [];
+this.age = age;
+this.name = name;
+}
+//create an eat method that gives the person the ability to eat some edible - it has a param of something that we can pass food to 
+// if the stomach length is < 10 the person can eat
+//we want to push the argument of something edible to the array (stomach)
+Person.prototype.eat = function(edible){
+  if(this.stomach.length < 10){
+    this.stomach.push(edible);
+  }
+}
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
+
+//method called to soString - needs to return a string with name and age
+
+Person.prototype.toString = function(){
+  return `${this.name}, ${this.age}`;
 
 }
+
+// create my object
+
+const personOne = new Person ('Ashton', 34);
+const personTwo = new Person ('Devin', 26);
+const personThree = new Person('Cora', 21);
+
+console.log(personOne.toString());
+personOne.eat('tacos');
+personOne.eat('fried chicken');
+personOne.eat('sashimi');
+
+console.log(personOne.stomach);
+personOne.poop();
+console.log(personOne.stomach);
 
 /*
   TASK 2
