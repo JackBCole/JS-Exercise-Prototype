@@ -58,10 +58,10 @@ Person.prototype.poop = function(){
 
 //method called to soString - needs to return a string with name and age
 
-Person.prototype.toString = function(){
-  return `${this.name}, ${this.age}`;
+ Person.prototype.toString = function(){
+   return `${this.name}, ${this.age}`;
 
-}
+ }
 
 // create my object
 
@@ -78,6 +78,8 @@ console.log(personOne.stomach);
 personOne.poop();
 console.log(personOne.stomach);
 
+
+
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
@@ -91,10 +93,46 @@ console.log(personOne.stomach);
     - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
+console.log("task two!")
 
-function Car() {
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = [];
+  this.odometer=[]; 
 
 }
+
+Car.prototype.toString = function(){
+  return `${this.model}, ${this.milesPerGallon}`;
+
+}
+
+Car.prototype.fill = function(gallons){
+  if(this.tank.length < 1){
+  this.tank.push(gallons)
+  }
+
+}
+const full = 12;
+//const fuelLoss = tank  
+const aCar = new Car ('Model T', 2)
+
+console.log(aCar.toString());
+
+console.log(aCar.tank);
+
+aCar.fill(full)
+
+console.log(aCar.tank);
+
+// Car.prototype.drive = function(distance){
+// if(distance >= .1){
+//   this.odometer.push(distance) &&   this.tank.shift()
+
+// }
+
+//}
 
 /*
   TASK 3
@@ -103,9 +141,22 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+
+
+function Baby(name, age, favoriteToy) {
+  this.name = name;
+  this.age = age; 
+  this.favoriteToy = favoriteToy;
 
 }
+
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`
+
+}
+
+const aBaby = new Baby ("bill", 1, "Teddy Bear")
+console.log(aBaby.play())
 
 /* 
   TASK 4
